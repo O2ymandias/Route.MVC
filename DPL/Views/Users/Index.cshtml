@@ -1,0 +1,66 @@
+﻿@model IEnumerable<UserVM>
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>All Users</h1>
+
+@if (Model.Any())
+{
+	<div class="mt-5 justify-content-center align-items-center">
+		<form asp-action="Index" class="row offset-2" method="get">
+			<div class="col-8">
+				<input class="form-control" type="search" name="searchInput" placeholder="User Name" />
+			</div>
+
+			<div class="col-4">
+				<input type="submit" value="Search" class="col btn btn-info" />
+			</div>
+		</form>
+	</div>
+
+
+	<table class=" mt-3 table table-striped table-bordered table-hover">
+		<thead>
+			<tr class="text-center">
+				<th>@Html.DisplayNameFor(m => m.Id)</th>
+				<th>@Html.DisplayNameFor(m => m.FirstName)</th>
+				<th>@Html.DisplayNameFor(m => m.LastName)</th>
+				<th>@Html.DisplayNameFor(m => m.UserName)</th>
+				<th>@Html.DisplayNameFor(m => m.Email)</th>
+				<th>@Html.DisplayNameFor(m => m.Roles)</th>
+
+				<th>Details</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (var user in Model)
+			{
+				<tr class="text-center">
+					<td>@user.Id</td>
+					<td>@user.FirstName</td>
+					<td>@user.LastName</td>
+					<td>@user.UserName</td>
+					<td>@Html.DisplayFor(model => user.Email)</td>
+					<td>
+						@string.Join(',', user.Roles)
+					</td>
+
+					<partial name="IndexButtonsPartial" model="user.Id" />
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<div class=" mt-3 alert alert-info">
+		<h2>
+			<b class="text-black">There Is No Users</b>
+		</h2>
+	</div>
+}
+

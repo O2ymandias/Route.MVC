@@ -1,0 +1,56 @@
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+	<div class="container-fluid">
+		<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DPL</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+			<ul class="navbar-nav flex-grow-1">
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+				</li>
+
+				@if(User.Identity.IsAuthenticated)
+				{
+					@if (User.IsInRole(RoleConstants.User))
+					{
+						<li class="nav-item">
+							<a class="nav-link text-success" asp-area="" asp-controller="Departments" asp-action="Index">Departments</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-success" asp-area="" asp-controller="Employees" asp-action="Index">Employees</a>
+						</li>
+						<li class="nav-item ms-lg-auto">
+							<a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="LogOut">LogOut</a>
+						</li>
+					}
+
+					@if (User.IsInRole(RoleConstants.Admin))
+					{
+						<li class="nav-item">
+							<a class="nav-link text-success" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-success" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+						</li>
+
+						<li class="nav-item ms-lg-auto">
+							<a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="LogOut">LogOut</a>
+						</li>
+					}
+				}
+				else
+				{
+					<li class="nav-item ms-lg-auto">
+						<a class="btn btn-primary" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+					</li>
+				}
+
+			</ul>
+		</div>
+	</div>
+</nav>

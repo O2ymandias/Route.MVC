@@ -1,0 +1,22 @@
+﻿@model UserVM
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-danger">Delete <b>@Model.FirstName @Model.LastName</b>?</h1>
+
+<form asp-action="Delete" method="post">
+
+	<div asp-validation-summary="ModelOnly"></div>
+
+	<partial name="PartialViews/DeleteDetailsPartial" model="@Model" />
+
+	<br />
+
+	<div>
+		<input class=" btn btn-danger" type="submit" value="Delete" />|
+		<a class=" btn btn-success" asp-action="Index">Cancel</a>
+	</div>
+
+</form>
+

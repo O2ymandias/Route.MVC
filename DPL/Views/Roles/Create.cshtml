@@ -1,0 +1,22 @@
+﻿@model CreateRoleVM
+@{
+	ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create" method="post">
+	<div asp-validation-summary="ModelOnly"></div>
+	<div class="form-group">
+		<label class="form-label" asp-for="RoleName"></label>
+		<input class="form-control" asp-for="RoleName" />
+		<span class="text-danger" asp-validation-for="RoleName"></span>
+	</div>
+	<br />
+	<div>
+		<input class="btn btn-success" type="submit" value="Create" />|
+		<a class="btn btn-light" asp-action="Index">Back To List</a>
+	</div>
+</form>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+

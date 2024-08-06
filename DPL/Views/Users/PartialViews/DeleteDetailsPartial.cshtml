@@ -1,0 +1,44 @@
+﻿@model UserVM
+
+<div class="form-group">
+	<label class="form-label" asp-for="Id"></label>
+	<input readonly class="form-control" asp-for="Id" />
+</div>
+<br />
+<div class="form-group">
+	<label class="form-label" asp-for="UserName"></label>
+	<input readonly class="form-control" asp-for="UserName" />
+</div>
+<br />
+<div class="form-group">
+	<label class="form-label" asp-for="FirstName"></label>
+	<input readonly class="form-control" asp-for="FirstName" />
+</div>
+<br />
+<div class="form-group">
+	<label class="form-check-label" class="form-label" asp-for="LastName"></label>
+	<input readonly class="form-control" asp-for="LastName" />
+</div>
+<br />
+<div class="form-group">
+	<label class="form-check-label" class="form-label" asp-for="PhoneNumber"></label>
+	<input readonly class="form-control" asp-for="PhoneNumber" />
+</div>
+<br />
+<div class="form-group">
+	<label class="form-label" asp-for="Email"></label>
+	<input readonly class="form-control" asp-for="Email" />
+</div>
+<br />
+<div class="form-group">
+	<label class="form-label" asp-for="Roles"></label>
+	@if (Model.Roles?.Count > 0)
+	{
+		<input readonly class="form-control" value="@string.Join(',', Model.Roles)" />
+	}
+	else
+	{
+		<input readonly class="form-control" value="" />
+	}
+
+</div>

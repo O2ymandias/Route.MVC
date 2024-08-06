@@ -1,0 +1,25 @@
+﻿@model RoleVM
+@{
+	ViewData["Title"] = "Delete";
+}
+
+<h1>Delete @Model.Name</h1>
+<br />
+<form asp-action="Delete" method="post">
+	<div asp-validation-summary="ModelOnly"></div>
+	<div class="form-group">
+		<label class="form-label" asp-for="Id"></label>
+		<input readonly class="form-control" asp-for="Id" />
+	</div>
+	<br />
+	<div class="form-group">
+		<label class="form-label" asp-for="Name"></label>
+		<input readonly class="form-control" asp-for="Name" />
+	</div>
+	<br />
+	<div>
+		<input class="btn btn-danger" type="submit" value="Delete" />|
+		<a class="btn btn-light" asp-action="Index">Back To List</a>
+	</div>
+</form>
+

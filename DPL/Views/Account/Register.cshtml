@@ -1,0 +1,67 @@
+﻿@model RegisterVM
+@{
+	ViewData["Title"] = "Register";
+	Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="main-agileinfo">
+	<div class="agileits-top">
+
+		<form asp-action="Register" method="post">
+			<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+			<br />
+			<div>
+				<input asp-for="FirstName" placeholder="First Name">
+				<span class="text-danger" asp-validation-for="FirstName"></span>
+			</div>
+			<br />
+			<div>
+				<input asp-for="LastName" placeholder="Last Name">
+				<span class="text-danger" asp-validation-for="LastName"></span>
+			</div>
+			<br />
+			<div>
+				<input asp-for="UserName" placeholder="User Name">
+				<span class="text-danger" asp-validation-for="UserName"></span>
+			</div>
+			<br />
+			<div>
+				<input asp-for="Email" placeholder="Email">
+				<span class="text-danger" asp-validation-for="Email"></span>
+			</div>
+			<br />
+			<div>
+				<input asp-for="PhoneNumber" placeholder="PhoneNumber">
+				<span class="text-danger" asp-validation-for="PhoneNumber"></span>
+			</div>
+			<br />
+			<div>
+				<input asp-for="Password" placeholder="Password">
+				<span class="text-danger" asp-validation-for="Password"></span>
+			</div>
+			<br />
+			<div>
+				<input asp-for="ConfirmPassword" placeholder="Confirm Password">
+				<span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+			</div>
+			<br />
+
+			<div class="wthree-text">
+				<label class="anim">
+					<input asp-for="AgreeOnTerms" class="checkbox">
+					<span>I Agree To The Terms & Conditions</span>
+				</label>
+				<div class="clear"> </div>
+			</div>
+			<input type="submit" value="SIGNUP">
+		</form>
+
+		<p>Do You have an Account? <a asp-action="Login"> Login Now!</a></p>
+	</div>
+</div>
+
+@section Scripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
+

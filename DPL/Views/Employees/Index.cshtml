@@ -1,0 +1,82 @@
+﻿@model IReadOnlyList<EmployeeVm>
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>All Employees</h1>
+
+@if (TempData.ContainsKey("Message"))
+{
+	<div class="mt-3 alert alert-success" id="alertMessage">
+		@TempData["Message"]
+	</div>
+}
+
+<a class="mt-3 btn btn-success" asp-action="Create">Create New Employee</a>
+
+@if (Model.Count > 0)
+{
+		<div class="mt-5 justify-content-center align-items-center">
+		<form asp-action="Index" class="row offset-2" method="get">
+			<div class="col-8">
+				<input class="form-control" type="search" name="searchInput" placeholder="Employee's Name" />
+			</div>
+
+			<div class="col-4">
+				<input type="submit" value="Search" class="col btn btn-info" />
+			</div>
+		</form>
+	</div>
+
+
+	<table class=" mt-3 table table-striped table-bordered table-hover">
+		<thead>
+			<tr class="text-center">
+				<th>Image</th>
+				<th>Name</th>
+				<th>Department</th>
+				<th>Is Active</th>
+				<th>Employee Type</th>
+
+				<th>Details</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (var employee in Model)
+			{
+				<tr class="text-center">
+					<td>
+						<img class="img-fluid rounded" src="/files/images/@employee.ImageName" alt="Employee's Image" height="60px" width="70px" />
+					</td>
+					<td>@employee.Name</td>
+					<td>@employee.Department?.Name</td>
+					<td>
+						@if (employee.IsActive)
+						{
+							<i class="fa-solid fa-circle" style="color:darkgreen"></i>
+						}
+						else
+						{
+							<i class="fa-solid fa-circle" style="color:darkred"></i>
+						}
+					</td>
+					<td>@employee.EmployeeType</td>
+
+					<partial name="IndexButtonsPartial" model="employee.Id.ToString()" />
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<div class=" mt-3 alert alert-info">
+		<h2>
+			<b class="text-black">There Is No Employees Yet</b>
+		</h2>
+	</div>
+}
+
